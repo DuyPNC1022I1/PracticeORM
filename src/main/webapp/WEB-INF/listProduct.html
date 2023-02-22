@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--Khai báo thymeleaf thông qua thuộc tính th:-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+</head>
+<body>
+<h3>List Product</h3>
+<p><a th:href="@{/products/create}">Create new Product</a></p>
+<table id = "products" border="2">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.getId()}"></td>
+        <td th:text="${product.getName()}"></td>
+        <td th:text="${product.getPrice()}"></td>
+        <td><a th:href="@{/products/{id}/update(id=${product.getId()})}">update</a></td>
+        <td><a th:href="@{/products/{id}/delete(id=${product.getId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
